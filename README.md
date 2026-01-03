@@ -1,6 +1,6 @@
 # Sample Coffee Shop
 
-**Responsive sample coffee shop website template** built with HTML, CSS, and vanilla JavaScript — includes Home, Full Menu, and Order pages, mobile-friendly navigation, and smooth scrolling.
+**Responsive sample coffee shop website template** built with HTML, CSS, and JavaScript — includes Home, Full Menu, and Order pages, mobile-friendly navigation, and smooth scrolling.
 
 ## Features
 
@@ -30,7 +30,7 @@ python -m http.server 8000
 
 ## Suggested repository name
 
-`sample-coffee-shop` or `sample-coffee-shop-website`
+`sample-coffee-shop-website`
 
 ## Contact
 
@@ -39,3 +39,4 @@ For questions or contributions: info@samplecoffeeshop.com
 ## License
 
 MIT — see LICENSE for details (you can add a LICENSE file if desired).
+
