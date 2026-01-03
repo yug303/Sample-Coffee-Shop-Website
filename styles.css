@@ -1,0 +1,497 @@
+:root {
+  --primary: #6f4e37;
+  --secondary: #c9a961;
+  --accent: #8b4513;
+  --text: #2c1810;
+  --muted: #5c4033;
+  --bg: #f5f1eb;
+  --bg-cream: #faf7f2;
+  --white: #fff;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: var(--text);
+  background-color: var(--bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+/* Navigation Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  padding: 0.75rem 0;
+}
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo h1 {
+  font-size: 1.6rem;
+  color: var(--primary);
+  letter-spacing: 1px;
+}
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-menu a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.nav-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--secondary);
+  transition: width 0.3s ease;
+}
+.nav-menu a:hover {
+  color: var(--primary);
+}
+.nav-menu a:hover::after {
+  width: 100%;
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+.hamburger span {
+  width: 24px;
+  height: 3px;
+  background: var(--primary);
+  transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem 1.5rem 4rem;
+  color: var(--white);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative; /* ensure pseudo-element positions correctly */
+}
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.25
+  ); /* default darken — increase alpha to make image less visible */
+}
+
+/* per-hero overrides (tweak alpha as needed) */
+.hero-section.hero-1::before {
+  background: rgba(0, 0, 0, 0.3);
+} /* darker */
+.hero-section.hero-2::before {
+  background: rgba(0, 0, 0, 0.28);
+}
+.hero-section.hero-3::before {
+  background: rgba(255, 255, 255, 0.12);
+} /* light overlay for very bright images */
+
+/* ensure content sits above the overlay */
+.hero-section .hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-section .hero-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.35);
+}
+.hero-section .hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+  opacity: 0.95;
+}
+.hero-section .hero-description {
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+/* Specific hero backgrounds with cafe interior images - Warm wooden cafe interiors with tables and counters */
+.hero-section.\\31 {
+  /* Hero Section 1 - Welcome section - Cafe interior with wooden communal tables */
+  /* Using local image with NO gradient overlay */
+  background-image: url("images/clifford-VobvKmG-StA-unsplash.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.hero-section.\\31::before {
+  /* Disable dark overlay for this section so the image appears without color tint */
+  background: transparent;
+  pointer-events: none;
+}
+.hero-section.\\32 {
+  /* Hero Section 2 - More Than Just Coffee - Cozy cafe interior with service counter */
+  background-image: linear-gradient(
+    url("ruben-ramirez-xhKG01FN2uk-unsplash.jpg")
+  );
+}
+
+.hero-section.\\33 {
+  /* Hero Section 3 - Order Online - Warm cafe space with wooden tables and warm lighting */
+  background-image: linear-gradient(
+      rgba(44, 24, 16, 0.3),
+      rgba(44, 24, 16, 0.3)
+    ),
+    url("https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1920&q=80");
+}
+/* Buttons */
+.cta-button {
+  display: inline-block;
+  padding: 0.95rem 2.4rem;
+  background: var(--secondary);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  transition: all 0.25s ease;
+  text-transform: uppercase;
+}
+.cta-button:hover {
+  background: var(--accent);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+.cta-button.secondary {
+  background: var(--primary);
+}
+
+/* Section Styles */
+.about-section,
+.menu-section,
+.info-section {
+  padding: 5rem 1.5rem;
+}
+.about-section {
+  background: var(--bg-cream);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-content {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.about-content h2 {
+  font-size: 2.4rem;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.about-content p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+/* Menu Section */
+.menu-section {
+  background: var(--white);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.6rem;
+  color: var(--primary);
+  margin-bottom: 2.5rem;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2.5rem; /* added spacing between grid and CTA button */
+}
+
+/* Ensure the 'VIEW FULL MENU' button sits clear of the grid */
+.menu-section .cta-button.secondary {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 540px) {
+  .menu-section .cta-button.secondary {
+    margin-top: 2rem; /* slightly larger gap on small screens */
+  }
+}
+
+.menu-item {
+  background: var(--bg-cream);
+  padding: 1.75rem;
+  border-radius: 14px;
+  text-align: center;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.menu-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--secondary);
+  box-shadow: 0 10px 30px rgba(111, 78, 55, 0.16);
+}
+
+.menu-item h3 {
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+}
+
+.menu-item p {
+  color: var(--muted);
+}
+
+/* Info Section */
+.info-section {
+  background: var(--bg-cream);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-card,
+.info-grid > h3 {
+  background: var(--white);
+  padding: 1.75rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.info-grid > h3 {
+  grid-column: 1 / -1;
+  font-size: 1.5rem;
+  color: var(--primary);
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+}
+
+.info-card h3 {
+  font-size: 1.4rem;
+  color: var(--primary);
+  margin-bottom: 0.9rem;
+}
+
+.info-card p {
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.hours strong {
+  color: var(--primary);
+}
+
+/* Footer */
+.footer {
+  background: var(--text);
+  color: var(--white);
+  padding: 1.8rem 1.5rem;
+}
+
+.footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    background: var(--white);
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem 0;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hero-section {
+    background-attachment: scroll;
+    padding-top: 7rem;
+  }
+
+  .hero-section .hero-title {
+    font-size: 2.3rem;
+  }
+
+  .hero-section .hero-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .hero-section .hero-title {
+    font-size: 1.9rem;
+  }
+
+  .cta-button {
+    padding: 0.85rem 2rem;
+    font-size: 0.95rem;
+  }
+}
+
+.hero-section.hero-1 {
+  background-image: url("images/clifford-VobvKmG-StA-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hero-section.hero-1::before {
+  background: transparent;
+  pointer-events: none;
+}
+
+.hero-section.hero-2 {
+  background-image: url("images/ruben-ramirez-xhKG01FN2uk-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hero-section.hero-2::before {
+  background: transparent;
+  pointer-events: none;
+}
+
+.hero-section.hero-3 {
+  background-image: url("images/wojciech-paczes-XO_8kk_8x2s-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hero-section.hero-3::before {
+  background: transparent;
+  pointer-events: none;
+}
+
+/* Hero-specific text color & contrast tweaks */
+.hero-section.hero-1 .hero-content,
+.hero-section.hero-2 .hero-content {
+  color: var(--white);
+}
+
+/* stronger heading shadow for busy/dark photos */
+.hero-section.hero-1 .hero-title,
+.hero-section.hero-2 .hero-title {
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* subtitles/descriptions get a subtler shadow for legibility */
+.hero-section.hero-1 .hero-subtitle,
+.hero-section.hero-2 .hero-subtitle,
+.hero-section.hero-1 .hero-description,
+.hero-section.hero-2 .hero-description {
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  opacity: 0.95;
+}
+
+/* CTA buttons on dark images: keep high contrast */
+.hero-section.hero-1 .cta-button,
+.hero-section.hero-2 .cta-button {
+  background: rgba(201, 169, 97, 0.95); /* var(--secondary) nearly opaque */
+  color: var(--white);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+}
+
+/* Hero 3: light/neutral background — use dark text */
+.hero-section.hero-3 .hero-content {
+  color: var(--text);
+  text-shadow: none;
+}
+
+/* CTA on light background */
+.hero-section.hero-3 .cta-button {
+  background: var(--primary);
+  color: var(--white);
+  box-shadow: 0 6px 18px rgba(111, 78, 55, 0.12);
+}
+
+/* Optional utility: small translucent backdrop for very busy photos
+   Use by adding class "backdrop" to .hero-content when needed */
+.hero-section .hero-content.backdrop {
+  background: rgba(0, 0, 0, 0.22);
+  padding: 0.9rem 1.2rem;
+  border-radius: 8px;
+  display: inline-block;
+  z-index: 2;
+}

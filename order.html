@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sample Coffee Shop - Order Online</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Small form tweaks scoped to this page */
+      .order-section {
+        padding: 4rem 1.5rem;
+      }
+      .order-form {
+        max-width: 780px;
+        margin: 0 auto;
+        background: var(--white);
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      .form-row.full {
+        grid-template-columns: 1fr;
+      }
+      .form-control {
+        padding: 0.6rem 0.9rem;
+        border-radius: 8px;
+        border: 1px solid #e6e1dd;
+      }
+      .order-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+      .item {
+        padding: 0.9rem;
+        border-radius: 10px;
+        background: var(--bg-cream);
+      }
+      .submit-row {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 1rem;
+      }
+      .note {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <h1>Sample Coffee Shop</h1>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="order.html">Order Online</a></li>
+          <li><a href="index.html#about">About</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-section hero-3">
+      <div class="hero-content">
+        <h2 class="hero-title">Order Online</h2>
+        <p class="hero-subtitle">
+          Fast pickup or local delivery — choose what works for you
+        </p>
+      </div>
+    </section>
+
+    <!-- Order Form -->
+    <section class="order-section">
+      <div class="container">
+        <div class="order-form">
+          <h3 style="color: var(--primary); margin-bottom: 0.75rem">
+            Place Your Order
+          </h3>
+          <p class="note">
+            This is a demo form — submitting will only show a confirmation
+            message.
+          </p>
+
+          <form id="orderForm">
+            <div class="form-row">
+              <input
+                type="text"
+                name="name"
+                placeholder="Full name"
+                class="form-control"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="form-row">
+              <select name="fulfillment" class="form-control">
+                <option value="pickup">Pickup</option>
+                <option value="delivery">Delivery</option>
+              </select>
+              <input
+                type="text"
+                name="phone"
+                placeholder="Phone (optional)"
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-row full">
+              <label style="margin-bottom: 0.5rem; font-weight: 700"
+                >Select items</label
+              >
+              <div class="order-items">
+                <label class="item"
+                  ><input type="checkbox" name="items" value="Espresso" />
+                  Espresso</label
+                >
+                <label class="item"
+                  ><input type="checkbox" name="items" value="Latte" />
+                  Latte</label
+                >
+                <label class="item"
+                  ><input type="checkbox" name="items" value="Cold Brew" /> Cold
+                  Brew</label
+                >
+                <label class="item"
+                  ><input type="checkbox" name="items" value="Pastry" />
+                  Pastry</label
+                >
+                <label class="item"
+                  ><input type="checkbox" name="items" value="Light Bite" />
+                  Light Bite</label
+                >
+              </div>
+            </div>
+
+            <div class="form-row full">
+              <textarea
+                name="notes"
+                class="form-control"
+                rows="4"
+                placeholder="Special requests / allergy notes"
+              ></textarea>
+            </div>
+
+            <div class="submit-row">
+              <button type="submit" class="cta-button">Place Order</button>
+              <a href="index.html" class="cta-button secondary">Back to Home</a>
+            </div>
+          </form>
+
+          <div
+            id="confirm"
+            style="
+              display: none;
+              margin-top: 1rem;
+              padding: 0.9rem;
+              border-radius: 8px;
+              background: var(--bg-cream);
+            "
+          >
+            Thanks! Your order has been noted — we'll be in touch.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; Sample Coffee Shop. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      document
+        .getElementById("orderForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          // Simple confirmation (demo only)
+          document.getElementById("confirm").style.display = "block";
+          // Optionally clear the form
+          this.reset();
+          // Scroll to confirmation
+          document
+            .getElementById("confirm")
+            .scrollIntoView({ behavior: "smooth" });
+        });
+    </script>
+  </body>
+</html>
